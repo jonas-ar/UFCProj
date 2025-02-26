@@ -1,13 +1,14 @@
-import { TouchableOpacity, TouchableOpacityProps, Text, TextProps } from "react-native"
+import { TouchableOpacity, TouchableOpacityProps, Text } from "react-native"
 import {styles} from "./styles"
 
 type Props = TouchableOpacityProps & {
-    texto: String
+    texto: String,
+    style?: Object
 }
 
-export function Button({texto, ...rest}: Props) {
+export function Button({texto, style, ...rest}: Props) {
     return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.8} {...rest}>
+        <TouchableOpacity style={[styles.button, style]} activeOpacity={0.8} {...rest}>
             <Text style={styles.texto}>{texto}</Text>
         </TouchableOpacity>
     )

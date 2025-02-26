@@ -1,8 +1,12 @@
-import { TextInput, TextInputProps } from "react-native";
+import MaskInput, {MaskInputProps} from 'react-native-mask-input'
 import { styles } from "./styles"
 
-export function Input( {...rest}: TextInputProps ) {
+type Props = MaskInputProps & {
+    style?: Object
+}
+
+export function Input({style, ...rest}: Props) {
     return (
-        <TextInput style = {styles.input} {...rest} />
+        <MaskInput style = {[styles.input, style]} {...rest} />
     )
 }
