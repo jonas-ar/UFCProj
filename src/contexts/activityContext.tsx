@@ -1,6 +1,6 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
-interface Activity {
+export interface Activity {
     titulo: string;
     responsavel: string;
     data: string;
