@@ -2,7 +2,7 @@ import { TouchableOpacity, TouchableOpacityProps, Text } from "react-native"
 import {styles} from "./styles"
 
 type Props = TouchableOpacityProps & {
-    texto: String,
+    texto: string,
     style?: Object
 }
 
