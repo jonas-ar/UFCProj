@@ -10,11 +10,13 @@ export interface Activity {
 interface ActivityContextType {
     activities: Activity[];
     addActivity: (activity: Activity) => void;
+    deleteActivity: (index: number) => void;
 }
 
 export const ActivityContext = createContext<ActivityContextType>({
     activities: [],
     addActivity: () => {},
+    deleteActivity: () => {},
 });
 
 export const ActivityProvider = ({ children }: { children: ReactNode }) => {
@@ -23,9 +25,15 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
     const addActivity = (activity: Activity) => {
         setActivities((prevActivities) => [...prevActivities, activity]);
     };
+    
+    const deleteActivity = (index: number) => {
+        setActivities((prevActivities) =>
+            prevActivities.filter((_, i) => i !== index)
+        );
+    };
 
     return (
-        <ActivityContext.Provider value={{ activities, addActivity }}>
+        <ActivityContext.Provider value={{ activities, addActivity, deleteActivity }}>
             {children}
         </ActivityContext.Provider>
     );
